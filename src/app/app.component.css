@@ -1,10 +1,4 @@
 /* AppComponent's private CSS styles */
-.main-content {
-  background-color: #282C34;
-  width: 100vw;
-  height: 100vh;
-}
-
 nav a {
   padding: 1rem;
   background-color: #E8E8E8;
