@@ -36,4 +36,18 @@ export class HeroesComponent implements OnInit {
     this.heroService.deleteHero(hero.id).subscribe();
   }
 
+  getStarArray(rating: number): boolean[] {
+    return Array.from({ length: 5 }, (_, index) => index < rating);
+  }
+
+  updateRating(hero: Hero, event: MouseEvent): void {
+    const starIndex = (event.target as HTMLElement).getAttribute('data-index');
+    if (starIndex !== null) {
+      const newRating = +starIndex + 1;
+      if (newRating !== hero.rating) {
+        hero.rating = newRating;
+        this.heroService.updateHero(hero).subscribe(); 
+      }
+    }
+  }
 }

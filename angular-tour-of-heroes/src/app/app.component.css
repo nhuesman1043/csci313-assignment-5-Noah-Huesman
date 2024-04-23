@@ -1,21 +1,23 @@
 /* AppComponent's private CSS styles */
-h1 {
-    margin-bottom: 0;
-  }
-  nav a {
-    padding: 1rem;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-    background-color: #e8e8e8;
-    color: #3d3d3d;
-    border-radius: 4px;
-  }
+.main-content {
+  background-color: #282C34;
+  width: 100vw;
+  height: 100vh;
+}
+
+nav a {
+  padding: 1rem;
+  background-color: #E8E8E8;
+  color: #232C34;
+  border-radius: 5px;
+}
   
-  nav a:hover {
-    color: white;
-    background-color: #42545C;
-  }
-  nav a:active {
-    background-color: black;
-  }
+.nav-item:hover {
+  color: white !important;
+  background-color: #42545C;
+}
+
+.navbar-nav .nav-link.active {
+  background-color: #42545C; 
+  color: white; 
+}

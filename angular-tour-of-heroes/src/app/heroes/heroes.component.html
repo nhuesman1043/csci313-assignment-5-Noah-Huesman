@@ -1,20 +1,31 @@
-<h2>My Heroes</h2>
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add hero
-  </button>
+<div class="container">
+  <h2>Add Hero</h2>
+  <div class="mb-4">
+    <label for="new-hero" class="form-label fs-5">Hero name:</label>
+    <div class="input-group">
+      <input id="new-hero" #heroName class="form-control" />
+      <button type="button" class="btn btn-add fs-5" (click)="add(heroName.value); heroName.value='';">
+        Add Hero <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </div>
+  <h2>My Heroes</h2>
+  <ul class="list-group">
+    <li *ngFor="let hero of heroes" class="list-group-item d-flex justify-content-between align-items-center">
+      <a [routerLink]="['/detail', hero.id]" class="text-decoration-none d-flex align-items-center">
+        <span class="badge bg-secondary fs-5 me-2">{{hero.id}}</span> 
+        <span class="list-item fs-4">{{hero.name}}</span>
+      </a>
+      <div class="d-flex align-items-center">
+        <span class="rating-text fs-4">Rating:&nbsp;</span>
+        <div class="star-rating me-2" (click)="updateRating(hero, $event)">
+          <span *ngFor="let filled of getStarArray(hero.rating); let i = index" class="star-icon fs-4" [innerHTML]="filled ? '&#9733;' : '&#9734;'" [attr.data-index]="i" title="Set Rating"></span>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-delete btn-md" title="Delete Hero" (click)="delete(hero)">
+          X
+        </button>
+      </div>
+    </li>
+  </ul>
 </div>
-
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button type="button" class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
-  </li>
-</ul>
